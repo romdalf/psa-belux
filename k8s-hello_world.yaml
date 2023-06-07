@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    io.podman.annotations.ulimit: nofile=524288:524288,nproc=7252:7252
+  labels:
+    app: hello-app
+  name: hello-app-pod
+spec:
+  containers:
+  - image: ghcr.io/romdalf/psa-belux/hello-path:0.1
+    name: hello
+    ports:
+    - containerPort: 8080
+      hostPort: 8080
+    tty: true

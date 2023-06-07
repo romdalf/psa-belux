@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-pod-8080
+  namespace: default
+spec:
+  clusterIP: 10.96.135.26
+  clusterIPs:
+  - 10.96.135.26
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: hello-pod-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: hello-app
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
